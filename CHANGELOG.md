@@ -3,6 +3,21 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.1.2](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.2) — 2026-10-09
+
+
+### 🐛 Fixes
+
+- Block messages report the real line count (a trailing newline is not a line) ([`7504ca8`](https://github.com/sorinirimies/pi-edit-first/commit/7504ca89cbbf8c9cd35d50493d1865c8ca0e7f40))
+
+### 🧪 Tests
+
+- Make resolveToolPath tests platform-independent (Windows CI) ([`3745308`](https://github.com/sorinirimies/pi-edit-first/commit/374530875c4222894f2f661a7a6601087aed8316))
+- File:// URL case valid on Windows too ([`6311ea6`](https://github.com/sorinirimies/pi-edit-first/commit/6311ea6e91d227825c19355b2773bd0e556cda2a))
+
+### 🔧 Build & CI
+
+- Auto-merge library updates only after CI is green, and publish a patch automatically (any library update ships; major updates wait for review) ([`02b6fd4`](https://github.com/sorinirimies/pi-edit-first/commit/02b6fd42a9cd4695c24c2ebfde51f241d7b93f89))
 ## [0.1.1](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.1) — 2026-10-09
 
 

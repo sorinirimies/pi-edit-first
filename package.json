@@ -1,6 +1,6 @@
 {
   "name": "pi-edit-first",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pi extension that cuts output tokens: blocks whole-file `write` rewrites and hand-written project manifests, steering the agent to targeted `edit` calls and scaffolders. Zero prompt tokens.",
   "keywords": ["pi-package", "pi-extension", "tokens", "edit", "guard"],
   "license": "MIT",

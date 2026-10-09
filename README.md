@@ -42,6 +42,14 @@ Applies to every pi session (including pi run as an external agent in editors).
 - Only affects the `write` tool; `edit` is never blocked.
 - Does not affect other agents (e.g. Zed's native agent).
 
+## Security notes
+
+- **A token saver, not a sandbox.** It guards pi's `write` tool. An agent can still write files through `bash`; the guard exists to keep wasteful rewrites out of your context, not to confine the agent.
+- **Same path as the tool.** Paths are resolved exactly like pi's own tools (`@file`, `~/file`, `file://`, Unicode spaces, Windows shell paths), so those spellings can't slip past it. A contract test compares it with pi's real `resolveToCwd`.
+- **Fails open.** pi blocks a tool when a `tool_call` handler throws, so any unexpected error here means "allow": the guard can never stop legitimate work.
+- **Constant memory.** Line counts are streamed (64 KB chunks, early exit), never the whole file.
+- No network access, no shell commands, **zero runtime dependencies**.
+
 ## Development
 
 ```bash

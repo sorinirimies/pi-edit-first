@@ -1,0 +1,16 @@
+{
+  "name": "pi-edit-first",
+  "version": "0.1.0",
+  "description": "Pi extension that cuts output tokens: blocks whole-file `write` rewrites and hand-written project manifests, steering the agent to targeted `edit` calls and scaffolders. Zero prompt tokens.",
+  "keywords": ["pi-package", "pi-extension", "tokens", "edit", "guard"],
+  "license": "MIT",
+  "author": "sorinirimies",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sorinirimies/pi-edit-first.git"
+  },
+  "homepage": "https://github.com/sorinirimies/pi-edit-first#readme",
+  "files": ["extensions", "README.md", "LICENSE"],
+  "pi": { "extensions": ["./extensions/edit-first.ts"] },
+  "peerDependencies": { "@earendil-works/pi-coding-agent": "*" }
+}

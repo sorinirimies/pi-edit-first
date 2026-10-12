@@ -3,6 +3,12 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.1.4](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.4) — 2026-10-12
+
+
+### 🔧 Build & CI
+
+- **deps:** Bump actions/setup-node from 4.4.0 to 7.0.0 ([`0a2d66b`](https://github.com/sorinirimies/pi-edit-first/commit/0a2d66bbca17f241a9497157ca0980c1a198d3b7))
 ## [0.1.2](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.2) — 2026-10-09
 
 

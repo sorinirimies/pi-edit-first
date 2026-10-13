@@ -3,7 +3,7 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
-## [0.1.6](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.6) — 2026-10-12
+## [0.1.7](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.7) — 2026-10-13
 
 
 ### 📚 Docs
@@ -17,6 +17,12 @@ Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 ### 🔧 Build & CI
 
 - **deps:** Bump taiki-e/install-action from 2.87.26 to 2.87.27 (#4) ([`973d9dc`](https://github.com/sorinirimies/pi-edit-first/commit/973d9dc7e15f60e39730464140857628c24e8eba))
+- Restore the Gitea nightly and release workflows (both hosts run the full pipeline in parallel) ([`fc6472d`](https://github.com/sorinirimies/pi-edit-first/commit/fc6472d4d401dd5532539af4d4a16c377f30c0c2))
+
+### 🧹 Chores
+
+- Just recipes to push, pull and force-push to several remotes (push-all, pull-all, push-tags-all, *-force, sync-starscream, setup-remotes; release-push goes to every remote) ([`fdf9ecf`](https://github.com/sorinirimies/pi-edit-first/commit/fdf9ecff67d16f1735225ad5b79c56ab4c35e8ce))
+- Justfile remotes and release recipes in the gitkraft style (gitea-microlab, gitea-starscream, gitea-nexus-lab: push, pull, release, sync, all-remotes and force variants; unconfigured remotes are skipped) ([`dc852f0`](https://github.com/sorinirimies/pi-edit-first/commit/dc852f08983714c37bd36ed43e7049a2d9ed35b8))
 ## [0.1.5](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.5) — 2026-10-12
 
 

@@ -3,6 +3,18 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.1.8](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.8) — 2026-10-14
+
+
+### 📚 Docs
+
+- Separate install commands for individual copy ([`6295e15`](https://github.com/sorinirimies/pi-edit-first/commit/6295e15bf9448635e8a260f38707672a0f232d56))
+- Separate install commands for individual copy ([`5b4fe19`](https://github.com/sorinirimies/pi-edit-first/commit/5b4fe19f545a491d0bbee943658eba6caa3b0b1e))
+
+### 🔧 Build & CI
+
+- Don't release on ci(deps) (GitHub Actions) bumps ([`950a74d`](https://github.com/sorinirimies/pi-edit-first/commit/950a74d39098dbb8031dbdcd66dabae81cabd053))
+- Don't release on ci(deps) (GitHub Actions) bumps ([`ef1be66`](https://github.com/sorinirimies/pi-edit-first/commit/ef1be665ba3066e05340efabdc4f90064074862f))
 ## [0.1.7](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.7) — 2026-10-13
 
 

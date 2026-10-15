@@ -3,6 +3,17 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.1.9](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.9) — 2026-10-15
+
+
+### 🔧 Build & CI
+
+- Publish only when a runtime dependency really upgrades (or feat/fix/perf); dev-tooling updates no longer release ([`3c71170`](https://github.com/sorinirimies/pi-edit-first/commit/3c7117041d6fa7d281c45d3f02b0697d46622aa0))
+
+### 🧹 Chores
+
+- **justfile:** Push/pull current branch instead of hardcoded main ([`ec260a6`](https://github.com/sorinirimies/pi-edit-first/commit/ec260a6580116945306b7f347b1a843244cc3a70))
+- Nightly dev-tooling lockfile update 2026-10-15 (not released) ([`40a6fd1`](https://github.com/sorinirimies/pi-edit-first/commit/40a6fd13ed67ff59afad4dce470897b997357e22))
 ## [0.1.8](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.8) — 2026-10-14
 
 

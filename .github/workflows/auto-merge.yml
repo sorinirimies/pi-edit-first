@@ -71,15 +71,18 @@ jobs:
           REPO: ${{ github.repository }}
           NUMBER: ${{ steps.pr.outputs.number }}
 
+      # GITHUB_TOKEN may not merge a PR that changes .github/workflows/* (GitHub refuses
+      # without the `workflows` permission, and Actions cannot approve PRs). Dependabot's
+      # action bumps always touch workflows, so a PAT (repo + workflow scope) stored as the
+      # GH_PAT secret is required; GITHUB_TOKEN is only the fallback for non-workflow PRs.
       - name: Merge (squash)
         id: merge
         if: steps.kind.outputs.automerge == 'true'
         run: |
-          gh pr review "$NUMBER" --repo "$REPO" --approve || true
           gh pr merge "$NUMBER" --repo "$REPO" --squash --delete-branch
           echo "merged=true" >> "$GITHUB_OUTPUT"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           NUMBER: ${{ steps.pr.outputs.number }}
 

@@ -3,35 +3,65 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.2.0](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.0) — 2026-10-30
+
+
+### ✨ Features
+
+- One-shot allow, spelling-proof ignore, command usage + completions ([`a16611c`](https://github.com/sorinirimies/pi-edit-first/commit/a16611c126a937e82b1d5b00dc385042889ceae4))
+
+### 🔧 Build & CI
+
+- **deps:** Bump taiki-e/install-action from 2.87.27 to 2.87.29 (#5) ([`24b7524`](https://github.com/sorinirimies/pi-edit-first/commit/24b7524a875d1bed6daee00e03ea78f7d1e804fb))
+- **deps:** Bump hustcer/setup-nu from 3.28 to 3.29 (#6) ([`5e3908a`](https://github.com/sorinirimies/pi-edit-first/commit/5e3908a0dfa883844b0a258845d5ad96faa4f977))
+- Auto-merge with GH_PAT, drop forbidden self-approve ([`88c4260`](https://github.com/sorinirimies/pi-edit-first/commit/88c42608e43dd2f19d23d16c3d578f49f39b5b81))
+- **deps:** Bump taiki-e/install-action from 2.87.29 to 2.87.31 (#7) ([`71f12e2`](https://github.com/sorinirimies/pi-edit-first/commit/71f12e22b3e647bfd0f79d96061013f50c7f2870))
+
+### 🧹 Chores
+
+- Nightly dev-tooling lockfile update 2026-10-16 (not released) ([`bcae717`](https://github.com/sorinirimies/pi-edit-first/commit/bcae7177638d5340a9394876626604b57195d7da))
+- Nightly dev-tooling lockfile update 2026-10-20 (not released) ([`12efaed`](https://github.com/sorinirimies/pi-edit-first/commit/12efaeda0d0aa53ac0d37819e6e850bc7c0945e2))
+- Nightly dev-tooling lockfile update 2026-10-21 (not released) ([`0dbd86a`](https://github.com/sorinirimies/pi-edit-first/commit/0dbd86abed57af0933e45ae47e40bac26904407b))
+- Nightly dev-tooling lockfile update 2026-10-22 (not released) ([`ff75c5e`](https://github.com/sorinirimies/pi-edit-first/commit/ff75c5e17c5ba7d62ad2ce40b2665945be796a18))
+- Nightly dev-tooling lockfile update 2026-10-23 (not released) ([`096e05d`](https://github.com/sorinirimies/pi-edit-first/commit/096e05d195274849087f7227b5c0ad5407ab34b7))
+- Nightly dev-tooling lockfile update 2026-10-27 (not released) ([`4c0ba1b`](https://github.com/sorinirimies/pi-edit-first/commit/4c0ba1bddfcdedd302ef0ee357facf6f074dbd73))
+- Nightly dev-tooling lockfile update 2026-10-29 (not released) ([`5604f6d`](https://github.com/sorinirimies/pi-edit-first/commit/5604f6dc8ea97f3bef46717d2770a7d580e58ab7))
+- Nightly dev-tooling lockfile update 2026-10-30 (not released) ([`e053043`](https://github.com/sorinirimies/pi-edit-first/commit/e053043c232f880f68cf9f6c872bbc52fbd62e5e))
+- Ignore the local .codegraph index ([`e0047f5`](https://github.com/sorinirimies/pi-edit-first/commit/e0047f571d5a2ae89fadcb9c9df41137b2c52222))
 ## [0.1.9](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.9) — 2026-10-15
 
 
 ### 🔧 Build & CI
 
-- Publish only when a runtime dependency really upgrades (or feat/fix/perf); dev-tooling updates no longer release ([`3c71170`](https://github.com/sorinirimies/pi-edit-first/commit/3c7117041d6fa7d281c45d3f02b0697d46622aa0))
+- Ignore commits already released via the other host's parallel nightly (no phantom patch release) ([`1768152`](https://github.com/sorinirimies/pi-edit-first/commit/17681520cfcc7b8f7051b1dcb016bd6705adcccd))
 
 ### 🧹 Chores
 
 - **justfile:** Push/pull current branch instead of hardcoded main ([`ec260a6`](https://github.com/sorinirimies/pi-edit-first/commit/ec260a6580116945306b7f347b1a843244cc3a70))
 - Nightly dev-tooling lockfile update 2026-10-15 (not released) ([`40a6fd1`](https://github.com/sorinirimies/pi-edit-first/commit/40a6fd13ed67ff59afad4dce470897b997357e22))
+- Nightly dev-tooling lockfile update 2026-10-15 (not released) ([`c42a330`](https://github.com/sorinirimies/pi-edit-first/commit/c42a330a8518a36c6b5a6dceef12fea2cbc1c623))
 ## [0.1.8](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.8) — 2026-10-14
 
 
 ### 📚 Docs
 
-- Separate install commands for individual copy ([`6295e15`](https://github.com/sorinirimies/pi-edit-first/commit/6295e15bf9448635e8a260f38707672a0f232d56))
 - Separate install commands for individual copy ([`5b4fe19`](https://github.com/sorinirimies/pi-edit-first/commit/5b4fe19f545a491d0bbee943658eba6caa3b0b1e))
 
 ### 🔧 Build & CI
 
-- Don't release on ci(deps) (GitHub Actions) bumps ([`950a74d`](https://github.com/sorinirimies/pi-edit-first/commit/950a74d39098dbb8031dbdcd66dabae81cabd053))
 - Don't release on ci(deps) (GitHub Actions) bumps ([`ef1be66`](https://github.com/sorinirimies/pi-edit-first/commit/ef1be665ba3066e05340efabdc4f90064074862f))
+- Publish only when a runtime dependency really upgrades (or feat/fix/perf); dev-tooling updates no longer release ([`3c71170`](https://github.com/sorinirimies/pi-edit-first/commit/3c7117041d6fa7d281c45d3f02b0697d46622aa0))
 ## [0.1.7](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.1.7) — 2026-10-13
 
+
+### 📚 Docs
+
+- Separate install commands for individual copy ([`6295e15`](https://github.com/sorinirimies/pi-edit-first/commit/6295e15bf9448635e8a260f38707672a0f232d56))
 
 ### 🔧 Build & CI
 
 - Restore the Gitea nightly and release workflows (both hosts run the full pipeline in parallel) ([`fc6472d`](https://github.com/sorinirimies/pi-edit-first/commit/fc6472d4d401dd5532539af4d4a16c377f30c0c2))
+- Don't release on ci(deps) (GitHub Actions) bumps ([`950a74d`](https://github.com/sorinirimies/pi-edit-first/commit/950a74d39098dbb8031dbdcd66dabae81cabd053))
 
 ### 🧹 Chores
 

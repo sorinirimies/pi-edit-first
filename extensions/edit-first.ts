@@ -12,7 +12,7 @@
  * Commands
  *   /edit-first               status + block count
  *   /edit-first off | on      disable / enable for this session
- *   /edit-first allow <path>  allow one full rewrite of <path> this session
+ *   /edit-first allow <path>  allow the next full rewrite of <path> (one-shot)
  *
  * Config (optional): <agent dir>/edit-first.json
  *   { "maxWriteLines": 40, "scaffold": true, "ignore": ["CHANGELOG.md", "*.lock"] }
@@ -21,7 +21,7 @@
 import { existsSync } from "node:fs";
 import { open, readFile } from "node:fs/promises";
 import { homedir } from "node:os";
-import { basename, dirname, isAbsolute, join, resolve } from "node:path";
+import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
@@ -56,17 +56,29 @@ async function loadConfig(): Promise<Config> {
 	}
 }
 
-/** Minimal glob: `*` matches anything except `/`; matched against path or basename. */
-/** Minimal glob (`*` = anything except `/`) against the path or its basename. */
-export function matchesIgnore(path: string, patterns: string[]): boolean {
-	return patterns.some((pat) => {
-		if (pat.length > 256) return false; // absurd pattern: ignore it rather than risk slow matching
+const globCache = new Map<string, RegExp | null>();
+
+/** Compile a glob once; `null` for absurd patterns (ignored rather than risk slow matching). */
+function globToRegExp(pat: string): RegExp | null {
+	let re = globCache.get(pat);
+	if (re === undefined) {
 		const body = pat.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*+/g, "*").replace(/\*/g, "[^/]*");
-		const re = new RegExp(`^${body}$`);
-		return re.test(path) || re.test(basename(path));
-	});
+		re = pat.length > 256 ? null : new RegExp(`^${body}$`);
+		if (globCache.size > 1024) globCache.clear();
+		globCache.set(pat, re);
+	}
+	return re;
 }
 
+/** Minimal glob (`*` = anything except `/`) against the path or its basename. `\` counts as `/`. */
+export function matchesIgnore(path: string, patterns: string[]): boolean {
+	const p = path.replaceAll("\\", "/");
+	const base = basename(p);
+	return patterns.some((pat) => {
+		const re = globToRegExp(pat);
+		return re !== null && (re.test(p) || re.test(base));
+	});
+}
 
 // ---------------------------------------------------------------------------
 // Path handling — mirrors pi's own tool path resolution (`resolveToCwd`), so the
@@ -147,6 +159,12 @@ const SCAFFOLDS: Record<string, { hint: string; exists: string[] }> = {
 	"package.json": { hint: "run `npm init -y`", exists: ["package.json"] },
 };
 
+const SUBCOMMANDS = [
+	{ value: "on", label: "on", description: "enable for this session" },
+	{ value: "off", label: "off", description: "disable for this session" },
+	{ value: "allow ", label: "allow <path>", description: "allow the next full rewrite of <path>" },
+];
+
 export default function editFirst(pi: ExtensionAPI) {
 	let config: Config = { ...DEFAULTS };
 	let enabled = true;
@@ -171,7 +189,11 @@ export default function editFirst(pi: ExtensionAPI) {
 		if (typeof raw !== "string" || raw === "") return undefined;
 		const abs = resolveToolPath(raw, ctx.cwd);
 
-		if (allowed.has(abs) || matchesIgnore(raw, config.ignore)) return undefined;
+		if (allowed.delete(abs)) return undefined; // `allow` is one-shot: this rewrite only
+		// Match the ignore list against the cwd-relative path too, so `./x`, `@x` or an absolute path can't miss it.
+		if (matchesIgnore(raw, config.ignore) || matchesIgnore(relative(resolve(ctx.cwd), abs), config.ignore)) {
+			return undefined;
+		}
 
 		const deny = (reason: string) => {
 			blocked++;
@@ -220,18 +242,25 @@ export default function editFirst(pi: ExtensionAPI) {
 
 	pi.registerCommand("edit-first", {
 		description: "Status, on/off, or `allow <path>` for pi-edit-first",
+		getArgumentCompletions: (prefix: string) => {
+			const items = SUBCOMMANDS.filter((s) => s.value.startsWith(prefix.trimStart()));
+			return items.length > 0 ? items : null;
+		},
 		handler: async (args, ctx) => {
-			const [cmd, ...rest] = (args ?? "").trim().split(/\s+/).filter(Boolean);
+			const text = (args ?? "").trim();
+			const cmd = text.split(/\s+/, 1)[0];
+			const rest = text.slice(cmd.length).trim(); // keep the path verbatim (inner spaces intact)
 			if (cmd === "off") enabled = false;
 			else if (cmd === "on") enabled = true;
-			else if (cmd === "allow" && rest.length > 0) {
-				const p = rest.join(" ");
-				allowed.add(resolveToolPath(p, ctx.cwd));
-				ctx.ui.notify(`edit-first: full rewrite of ${p} allowed this session`, "info");
+			else if (cmd === "allow" && rest !== "") {
+				allowed.add(resolveToolPath(rest, ctx.cwd));
+				ctx.ui.notify(`edit-first: the next full rewrite of ${rest} is allowed`, "info");
 				return;
 			}
+			const usage = cmd === "" || cmd === "on" || cmd === "off" ? "" : " · usage: /edit-first [on|off|allow <path>]";
+			const pending = allowed.size > 0 ? ` · allowed=${allowed.size}` : "";
 			ctx.ui.notify(
-				`edit-first: ${enabled ? "on" : "off"} · maxWriteLines=${config.maxWriteLines} · scaffold=${config.scaffold} · blocked=${blocked}`,
+				`edit-first: ${enabled ? "on" : "off"} · maxWriteLines=${config.maxWriteLines} · scaffold=${config.scaffold} · blocked=${blocked}${pending}${usage}`,
 				"info",
 			);
 		},

@@ -54,7 +54,7 @@ Recorded from a real pi with only this plugin loaded; a small scripted mock mode
 
 - `/edit-first`: status and block count
 - `/edit-first off` / `on`: disable / enable for this session
-- `/edit-first allow <path>`: allow one full rewrite of `<path>` this session
+- `/edit-first allow <path>`: allow the next full rewrite of `<path>` (one-shot; run it again for another)
 
 ## Config (optional)
 
@@ -63,6 +63,8 @@ Recorded from a real pi with only this plugin loaded; a small scripted mock mode
 ```json
 { "maxWriteLines": 40, "scaffold": true, "ignore": ["CHANGELOG.md", "*.lock"] }
 ```
+
+`ignore` globs (`*` = anything but `/`) match the path relative to the working directory or the file name, however the path is spelled (`./x`, `@x`, absolute, `\`).
 
 ## Notes
 

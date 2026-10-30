@@ -174,6 +174,44 @@ describe("pi-edit-first config + edge cases", () => {
 		expect(await write("my file.txt")).toBeUndefined();
 	});
 
+	it("ignore patterns match however the path is spelled (./, @, absolute, backslashes)", async () => {
+		writeFileSync(join(agent, "edit-first.json"), JSON.stringify({ ignore: ["docs/*.md"] }));
+		mkdirSync(join(work, "docs"));
+		writeFileSync(join(work, "docs", "guide.md"), lines(100));
+		await boot();
+		for (const p of ["docs/guide.md", "./docs/guide.md", "@docs/guide.md", join(work, "docs", "guide.md")]) {
+			expect(await write(p), p).toBeUndefined();
+		}
+	});
+
+	it("allow is one-shot: the next rewrite passes, the one after is blocked again", async () => {
+		writeFileSync(join(work, "big.txt"), lines(100));
+		await boot();
+		await command.handler("allow big.txt", ctx());
+		await command.handler("", ctx());
+		expect(notes.at(-1)).toContain("allowed=1");
+		expect(await write("big.txt")).toBeUndefined();
+		expect((await write("big.txt"))?.block).toBe(true);
+	});
+
+	it("allow keeps inner spaces of the path verbatim", async () => {
+		writeFileSync(join(work, "a  b.txt"), lines(100));
+		await boot();
+		await command.handler("allow   a  b.txt  ", ctx());
+		expect(await write("a  b.txt")).toBeUndefined();
+	});
+
+	it("unknown subcommands show usage; completions suggest subcommands", async () => {
+		await boot();
+		await command.handler("bogus", ctx());
+		expect(notes.at(-1)).toContain("usage: /edit-first [on|off|allow <path>]");
+		await command.handler("on", ctx());
+		expect(notes.at(-1)).not.toContain("usage");
+		expect(command.getArgumentCompletions("").map((i: any) => i.value)).toEqual(["on", "off", "allow "]);
+		expect(command.getArgumentCompletions("al").map((i: any) => i.value)).toEqual(["allow "]);
+		expect(command.getArgumentCompletions("zzz")).toBeNull();
+	});
+
 	it("session_start resets the counters and the allow list", async () => {
 		writeFileSync(join(work, "big.txt"), lines(100));
 		await boot();

@@ -121,6 +121,13 @@ describe("countLinesCapped", () => {
 	});
 });
 
+describe("matchesIgnore separators", () => {
+	it("treats backslashes as slashes", () => {
+		expect(matchesIgnore("docs\\guide.md", ["docs/*.md"])).toBe(true);
+		expect(matchesIgnore("docs\\guide.md", ["guide.md"])).toBe(true);
+	});
+});
+
 describe("matchesIgnore hardening", () => {
 	it("collapses repeated stars and cannot be made to backtrack", () => {
 		const long = "a/".repeat(2000) + "x";
@@ -172,8 +179,10 @@ describe("pi-edit-first against pi's path forms and failure modes", () => {
 	});
 
 	it("/edit-first allow works for every spelling of the same file", async () => {
-		await command.handler("allow @big.txt", ctx());
-		for (const path of ["big.txt", "@big.txt", "./big.txt"]) expect(await call({ path }), path).toBeUndefined();
+		for (const path of ["big.txt", "@big.txt", "./big.txt"]) {
+			await command.handler("allow @big.txt", ctx()); // one-shot: re-allow for each spelling
+			expect(await call({ path }), path).toBeUndefined();
+		}
 	});
 
 	it("fails OPEN: a throwing or malformed event never blocks the tool (pi blocks on handler errors)", async () => {

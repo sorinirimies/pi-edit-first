@@ -62,7 +62,7 @@ const globCache = new Map<string, RegExp | null>();
 function globToRegExp(pat: string): RegExp | null {
 	let re = globCache.get(pat);
 	if (re === undefined) {
-		const body = pat.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*+/g, "*").replace(/\*/g, "[^/]*");
+		const body = pat.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*+/g, "*").replace(/\*/g, "[^/]*").replace(/\?/g, "[^/]");
 		re = pat.length > 256 ? null : new RegExp(`^${body}$`);
 		if (globCache.size > 1024) globCache.clear();
 		globCache.set(pat, re);
@@ -70,7 +70,7 @@ function globToRegExp(pat: string): RegExp | null {
 	return re;
 }
 
-/** Minimal glob (`*` = anything except `/`) against the path or its basename. `\` counts as `/`. */
+/** Minimal glob (`*` = anything except `/`, `?` = one such character) against the path or its basename. `\` counts as `/`. */
 export function matchesIgnore(path: string, patterns: string[]): boolean {
 	const p = path.replaceAll("\\", "/");
 	const base = basename(p);

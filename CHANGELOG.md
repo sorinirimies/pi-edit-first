@@ -3,6 +3,20 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.2.2](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.2) — 2026-10-31
+
+
+### 🐛 Fixes
+
+- `?` in an ignore glob matches one character (it reached the RegExp unescaped and threw on every tool call) ([`5a905c0`](https://github.com/sorinirimies/pi-edit-first/commit/5a905c0efb9f1d7506de11b9c46c3607e51896cc))
+
+### 🧪 Tests
+
+- Seeded fuzz tests (FUZZ_ITERS / FUZZ_SEED; a failure prints the seed that reproduces it) ([`9563eb3`](https://github.com/sorinirimies/pi-edit-first/commit/9563eb389b0e31d995287db599a6e84907b70b17))
+
+### 🔧 Build & CI
+
+- Fuzz and Security workflows on GitHub and Gitea ([`b043cb1`](https://github.com/sorinirimies/pi-edit-first/commit/b043cb11bb4f48f5205a64631a9ccef7c2e1f519))
 ## [0.2.1](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.1) — 2026-10-31
 
 

@@ -3,6 +3,21 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.2.1](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.1) — 2026-10-31
+
+
+### 🔧 Build & CI
+
+- **deps-dev:** Pin undici 8.12.3 via overrides ([`78a6c9e`](https://github.com/sorinirimies/pi-edit-first/commit/78a6c9e7d6e4ae761bb2ba7f926d1df92632bef9))
+- Keep .gitea workflow actions up to date; auto-merge needs GH_PAT for action bumps ([`c697b14`](https://github.com/sorinirimies/pi-edit-first/commit/c697b14ab08d7ddd3d08b1113113a3ef00314297))
+- **deps:** Bump Gitea workflow actions ([`d230115`](https://github.com/sorinirimies/pi-edit-first/commit/d230115bdd869cfcf75d57601a974ae68b5e49d2))
+- One nightly (GitHub); Gitea mirrors GitHub's main and tags hourly ([`c6eb52e`](https://github.com/sorinirimies/pi-edit-first/commit/c6eb52ec57efd8fa7ed3d812e4c7a8822cec1024))
+
+### 🧹 Chores
+
+- Nightly dev-tooling lockfile update 2026-10-31 (not released) ([`ea168ae`](https://github.com/sorinirimies/pi-edit-first/commit/ea168ae53ca47c3f7ebd8eebbbdd26b248ae1b42))
+- Nightly dev-tooling lockfile update 2026-10-31 (not released) ([`e48d074`](https://github.com/sorinirimies/pi-edit-first/commit/e48d0749f5f29b0ef378d55f749ffa67557dac51))
+- Merge Gitea's main (both hosts ran their own nightly) ([`3dac1d7`](https://github.com/sorinirimies/pi-edit-first/commit/3dac1d76169facf1ffd3cac0ac15257764d3e6f2))
 ## [0.2.0](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.0) — 2026-10-30
 
 

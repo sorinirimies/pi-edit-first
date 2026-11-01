@@ -4,6 +4,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/pi-edit-first.svg)](https://www.npmjs.com/package/pi-edit-first)
 [![CI](https://github.com/sorinirimies/pi-edit-first/actions/workflows/ci.yml/badge.svg)](https://github.com/sorinirimies/pi-edit-first/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Audit](https://github.com/sorinirimies/pi-edit-first/actions/workflows/security.yml/badge.svg)](https://github.com/sorinirimies/pi-edit-first/actions/workflows/security.yml)
+[![Fuzz](https://github.com/sorinirimies/pi-edit-first/actions/workflows/fuzz.yml/badge.svg)](https://github.com/sorinirimies/pi-edit-first/actions/workflows/fuzz.yml)
 
 A [pi](https://github.com/earendil-works/pi-coding-agent) extension that cuts output tokens by making the agent **edit, not rewrite**.
 

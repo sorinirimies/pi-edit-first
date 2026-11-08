@@ -3,6 +3,23 @@
 Generated from [Conventional Commits](https://www.conventionalcommits.org) by
 [git-cliff](https://git-cliff.org). Do not edit by hand.
 
+## [0.2.4](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.4) — 2026-11-08
+
+
+### 🐛 Fixes
+
+- **ci:** Nightly commit step accepts bool arg from nu ([`194a359`](https://github.com/sorinirimies/pi-edit-first/commit/194a359e3e077bc253825469076fffcc8f116c7f))
+
+### 🔧 Build & CI
+
+- **deps:** Bump Gitea workflow actions ([`3799607`](https://github.com/sorinirimies/pi-edit-first/commit/3799607469fb8acf2e35e411100e2e99794bd329))
+- Align tooling with the plugin template ([`b2bc0ba`](https://github.com/sorinirimies/pi-edit-first/commit/b2bc0ba9939c784a8f0351a957d4e562fa17ffef))
+- Scan the git history for secrets with gitleaks ([`a591ece`](https://github.com/sorinirimies/pi-edit-first/commit/a591ececdc0790d06e2d6e09af9bcb9d8f19b925))
+
+### 🧹 Chores
+
+- Nightly dev-tooling lockfile update 2026-11-03 (not released) ([`d918992`](https://github.com/sorinirimies/pi-edit-first/commit/d9189929af77561b2e7989993012f08a02170af0))
+- Nightly dev-tooling lockfile update 2026-11-08 (not released) ([`96c03d8`](https://github.com/sorinirimies/pi-edit-first/commit/96c03d8cb57fbdda737a0ab35fc6a146fb3ba305))
 ## [0.2.3](https://github.com/sorinirimies/pi-edit-first/releases/tag/v0.2.3) — 2026-11-02
 
 
